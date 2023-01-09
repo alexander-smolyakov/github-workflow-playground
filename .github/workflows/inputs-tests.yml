@@ -1,0 +1,37 @@
+name: Test workflows inputs
+
+on:
+  workflow_dispatch:
+  workflow_call:
+    test_boolean:
+      description: "Test boolean"
+      type: boolean
+      required: true
+      default: false
+    test_string:
+      description: "Test string"
+      type: string
+      required: true
+      default: "test string"
+    test_int:
+      description: "Test string"
+      type: number
+      required: true
+      default: 123
+
+jobs:
+  display-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        id: github_context_step
+        run: echo '${{ toJSON(github) }}'
+      - name: Dump GitHub context
+        id: github_context_step
+        run: echo '${{ toJSON(inputs) }}'
+      - name: "Display inputs"
+        run: |
+          echo ${{ input.test_boolean }}
+          echo ${{ input.test_string }}
+          echo ${{ input.test_int }}
+          
