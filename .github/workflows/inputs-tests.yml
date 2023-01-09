@@ -27,5 +27,5 @@ jobs:
         run: echo '${{ toJSON(inputs) }}'
       - name: "Display inputs"
         run: |
-          echo ${{ input.test_boolean }}
-          echo ${{ input.test_string }}
+          echo ${{ inputs.test_boolean }}
+          echo ${{ inputs.test_string }}

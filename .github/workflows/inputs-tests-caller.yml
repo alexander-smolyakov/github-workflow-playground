@@ -18,5 +18,5 @@ jobs:
   display-inputs:
     uses: ./.github/workflows/inputs-tests.yml
     with:
-      test_boolean: ${{ input.test_boolean }}
-      test_string: ${{ input.test_string }}
+      test_boolean: ${{ inputs.test_boolean }}
+      test_string: ${{ inputs.test_string }}
