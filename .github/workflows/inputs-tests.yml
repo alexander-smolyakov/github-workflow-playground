@@ -33,10 +33,28 @@ jobs:
       - name: Dump GitHub context
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
-      - name: Dump GitHub context
+
+      - name: Dump inputs context
         id: github_inputs_step
         run: echo '${{ toJSON(inputs) }}'
+
       - name: "Display inputs"
         run: |
           echo ${{ inputs.test_boolean }}
           echo ${{ inputs.test_string }}
+
+      - name: "test_boolean - true as boolean"
+        if: inputs.test_boolean == true
+        run: echo ${{ inputs.test_string }}
+
+      - name: "test_boolean - true as string"
+        if: inputs.test_boolean == 'true'
+        run: echo ${{ inputs.test_string }}
+
+      - name: "test_boolean - false as boolean"
+        if: inputs.test_boolean == false
+        run: echo ${{ inputs.test_string }}
+
+      - name: "test_boolean - false as string"
+        if: inputs.test_boolean == 'false'
+        run: echo ${{ inputs.test_string }}
