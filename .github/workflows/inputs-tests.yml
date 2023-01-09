@@ -2,6 +2,17 @@ name: Test workflows inputs
 
 on:
   workflow_call:
+    inputs:
+      test_boolean:
+        description: "Test boolean"
+        type: boolean
+        required: true
+        default: false
+      test_string:
+        description: "Test string"
+        type: string
+        required: true
+        default: "test string"
   workflow_dispatch:
     inputs:
       test_boolean:
