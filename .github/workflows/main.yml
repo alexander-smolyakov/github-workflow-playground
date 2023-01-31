@@ -1,7 +1,7 @@
 name: Test Python Package Info Action
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       package-name:
         type: string
