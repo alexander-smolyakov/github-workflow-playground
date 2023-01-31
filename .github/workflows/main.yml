@@ -1,0 +1,27 @@
+name: Test Python Package Info Action
+
+on:
+  workflow_call:
+    inputs:
+      package-name:
+        type: string
+        description: 'Package Name'
+        default: 'dbt-core'
+      version:
+        type: string
+        description: 'Version'
+        default: '1.6.0a1'
+
+jobs:
+  get-package-info:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: "Fetch PyPI Info For Package"
+        id: pypi_info
+        uses: dbt-labs/actions/py-package-info@v1.1.0
+        with:
+          package: ${{ inputs.package-name }}
+          version: ${{ inputs.version }}
+          check-test-index: true
+          retries: 5
